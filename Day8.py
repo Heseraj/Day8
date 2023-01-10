@@ -93,15 +93,18 @@ def prime_checker(number):
 prime_checker(17)
 
 #%%
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
+text = "Hello"
+shift = 0
 #TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 
-def encrypt(text, shift):
+def encrypt(plain_text, shift_amuont):
 
     #TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.
     #e.g.
@@ -109,10 +112,53 @@ def encrypt(text, shift):
     #shift = 5
     #cipher_text = "mjqqt"
     #print output: "The encoded text is mjqqt"
-    
+    for i in text:
+        cipher_text = ""
+        # print(alphabet.index(i))
+        position = alphabet.index(i)
+        # print(type(position))
+        new_position = position + 5
+        new_letter= alphabet[new_position]
+        cipher_text += new_letter
+        print(cipher_text)
+        
+        
+def decrypt(ciphertext, shift_amount):
+    plain_text = ""
+    for letter in ciphertext:
+        position = alphabet.index(letter)
+        new_position = position - shift_amount
+        plain_text += alphabet.index(new_position)
+        
+        
+if direction == "encode":
+    encrypt(plain_text = text, shift_amount = shift)
+elif direction == "decrypt":
+    decrypt(ciphertext=text, shift_amount=shift)
+
     ##HINT: How do you get the index of an item in a list:
     #https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list
 
     ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
 
 #TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message.
+
+encrypt(text = "hello", shift=0)
+
+
+#%%
+#
+# alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+# text = "helloMosa".lower()
+#
+# for i in text:
+#     # print(alphabet.index(i))
+#     position = alphabet.index(i)
+#     # print(type(position))
+#     new_position = position + 5
+#     new_text = alphabet[new_position]
+#     print(new_text)
+
+
+#%% I will repeat cesar cipher
+
